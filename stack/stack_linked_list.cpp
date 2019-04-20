@@ -6,13 +6,42 @@ class stack{
 		int item;
 		Node *next;
 	};
-	Node* first = NULL;
+	Node* first;
 public:
-	bool isEmpty(){
-		return (first == NULL);
+	stack();
+	stack(const stack&);
+	bool isEmpty();
+	void push(int item);
+	int pop();
+	~stack();
+
+};
+	stack::stack(){first = NULL;}
+/*	stack::stack(const stack& q) to do
+	{
+		if()
+*/	}
+	stack::~stack()
+	{
+		if(first != NULL)
+		{
+			Node* temp;
+			while(first != NULL)
+			{
+				temp = first;
+				first = first->next;
+				delete temp;
+			}
+			delete first;
+		}
+	}
+	bool stack::isEmpty()
+	{
+		return 
+		(first == NULL);
 	}
 	
-	void push(int item)
+	void stack::push(int item)
 	{
 		Node* old_first = first;
 		first = new Node;
@@ -20,14 +49,12 @@ public:
 		first->next = old_first;
 	}
 	
-	int pop()
+	int stack::pop()
 	{
 		int item = first->item;
 		first = first->next;
 		return item;
 	}
-};
-
 int main(){
 stack q;
 q.push(5);
